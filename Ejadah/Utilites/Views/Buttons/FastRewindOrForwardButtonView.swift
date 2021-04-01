@@ -13,7 +13,7 @@ struct FastRewindOrForwardButtonView: View {
         Image(text)
             .resizable()
             .frame(width:39 , height: 30)
-            .accessibility(label: Text("زر تقديم او تاخير المقطع الصوتي"))
+            .accessibility(label: Text("تقديم وتاخير الشرح"))
     }
 }
 

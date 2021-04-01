@@ -13,7 +13,7 @@ struct PlayOrPauseAudioButtonView: View {
         Image(text)
             .resizable()
             .frame(width: 102, height: 102, alignment: .center)
-            .accessibility(label: Text("زر ايقاف وتشغيل الصوت"))
+            .accessibility(label: Text("ايقاف وتشغيل الصوت"))
     }
 }
 

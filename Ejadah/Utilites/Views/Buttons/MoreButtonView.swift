@@ -14,6 +14,7 @@ struct MoreButtonView: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: UIScreen.width / 5 * 0.3, height: UIScreen.height / 5 * 0.05, alignment: .center)
             .padding()
+            .accessibility(label: Text("التعديل"))
     }
 }
 

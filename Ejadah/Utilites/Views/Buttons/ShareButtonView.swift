@@ -12,7 +12,7 @@ struct ShareButtonView: View {
         Image(IconsCollection.share)
             .resizable()
             .frame(width: 41 , height: 41)
-            .accessibility(label: Text("زر مشاركه الشرح"))
+            .accessibility(label: Text("المشاركه"))
     }
 }
 

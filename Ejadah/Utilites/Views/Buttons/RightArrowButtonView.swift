@@ -12,7 +12,7 @@ struct RightArrowButtonView: View {
         Image(IconsCollection.rightArrow)
             .resizable()
             .frame(width: 30, height: 30, alignment: .center)
-            .accessibility(label: Text("زر الرجوع للخلف"))
+            .accessibility(label: Text("الرجوع"))
     }
 }
 
