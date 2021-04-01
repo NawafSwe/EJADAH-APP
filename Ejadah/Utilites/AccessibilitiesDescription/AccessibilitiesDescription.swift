@@ -24,7 +24,7 @@ struct AccessibilityDescription : Identifiable{
 struct AccessibilitiesDescription{
        static let headerCategoryTitle = AccessibilityDescription(label: Text("الرئيسية"), hint: Text(""), value: 0)
         static let backTrack = AccessibilityDescription(label: Text("الرجوع"), hint: Text(""), value: 0)
-       static let playButton = AccessibilityDescription(label: Text("تشغيل الشرح"), hint: Text("عند الضغط هذا الزر سيتم بدء الشرح الصوتي"), value: 0)
-       static let lineProgress = AccessibilityDescription(label: Text("يمكنك التحكم بالشرح تقديم أو تأخير"), hint: Text(" يمكن التحكم بتحريك يمين أو يسار"), value: 0)
-       static let shareButton = AccessibilityDescription(label: Text("زر المشاركة للشرح"), hint: Text("عند ضغظ هذا الزر سوف يتم فتح قائمه العناصر لمشاركه الشرح على تطبيقات التواصل"), value: 0)
+       static let playButton = AccessibilityDescription(label: Text("تشغيل الشرح"), hint: Text("سيتم بدء الشرح الصوتي"), value: 0)
+       static let lineProgress = AccessibilityDescription(label: Text("تقديم او تاخير الشرح"), hint:Text("يمكنك التحريك يمينا وشمالا للتحكم"), value: 0)
+       static let shareButton = AccessibilityDescription(label: Text(" المشاركة للشرح"), hint: Text("سيتم مشاركه الشرح على"), value: 0)
     }
