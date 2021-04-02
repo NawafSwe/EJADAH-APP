@@ -72,6 +72,10 @@ struct FileManagerViewController:UIViewControllerRepresentable{
                 
             }
         }
+        
+        override func isEqual(_ object:Any?) -> Bool {
+            return self.parent.selectedFile == object as? URL
+        }
     }
 }
 //MARK:- FileManagerView
