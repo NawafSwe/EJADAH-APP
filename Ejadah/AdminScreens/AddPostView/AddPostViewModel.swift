@@ -50,6 +50,9 @@ final class AddPostViewModel:ObservableObject{
         
     }
     //MARK:- addTrack
+    
+    /// adding new track to firebase by calling the repository function
+    /// - Parameter completion: completion if the operation went success or failed
     func addTrack(completion: @escaping (Result<Void, Error>) -> Void)  {
         if !urlString.isEmpty{
             var duration = 0
@@ -78,6 +81,9 @@ final class AddPostViewModel:ObservableObject{
     
     //MARK:- uploadFile
     // func to upload file
+    
+    /// uploading file by calling the repository function to upload file to fire storage
+    /// - Parameter completion: completion indicates the status of the operation if went success or failed
     func uploadFile(completion: @escaping (Result<Void, Error>) -> Void){
         DispatchQueue.main.async {
             self.isLoading = true
@@ -152,6 +158,7 @@ final class AddPostViewModel:ObservableObject{
         }
     }
     
+    /// to orchestrate the functionality of the view if we are in edit mode or add mode 
     func secondaryCallBack(){
         if mode.wrappedValue{
             //            guard let post = self.post else {return}
