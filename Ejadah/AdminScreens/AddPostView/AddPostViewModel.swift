@@ -51,7 +51,7 @@ final class AddPostViewModel:ObservableObject{
     }
     //MARK:- addTrack
     func addTrack()  {
-        
+        self.uploadFile()
         if !urlString.isEmpty{
             var duration = 0
             let assetKeys = ["playable", "duration"]

@@ -81,10 +81,7 @@ struct AddPostView: View {
                                 
                             }else{
                                 viewModel.getPublishButton()
-                                    .sheet(isPresented: $viewModel.showDocuments , onDismiss:{
-                                        self.viewModel.uploadFile()
-                                        
-                                    } ){ FileManagerView(capturedData: $viewModel.data) }
+                                    .sheet(isPresented: $viewModel.showDocuments){ FileManagerView(capturedData: $viewModel.data) }
                                 
                             }
                         }
