@@ -110,7 +110,6 @@ final class AddPostViewModel:ObservableObject{
                                 }
                             }
                         case .failure(let error):
-                            
                             self.isLoading = false
                             self.alertItem = AlertItem(title: Text("Uploading Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
                             
@@ -158,7 +157,7 @@ final class AddPostViewModel:ObservableObject{
         }
     }
     
-    /// to orchestrate the functionality of the view if we are in edit mode or add mode 
+    /// to orchestrate the functionality of the view if we are in edit mode or add mode
     func secondaryCallBack(){
         if mode.wrappedValue{
             //            guard let post = self.post else {return}
