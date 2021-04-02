@@ -85,11 +85,19 @@ final class PostRepository:ObservableObject{
     
     /// add new track to fireStore
     /// - Parameter track: adding new track
-    func addTrack(track:PostModel){
+    func addTrack(track:PostModel, completion: @escaping (Result< Void , Error>)->Void ){
         do{
             updateCategory(track.categoryId)
-            let _ = try db.collection(collectionName).addDocument(from: track){_ in}
+            let _ = try db.collection(collectionName).addDocument(from: track){error in
+                if let error = error{
+                    completion(.failure(error))
+                    return
+                }
+            }
+            completion(.success( () ))
+            return
         }catch let error {
+            completion(.failure(error))
             fatalError(error.localizedDescription)
         }
     }

@@ -88,13 +88,15 @@ struct AddPostView: View {
                         Button(action:{ self.viewModel.secondaryCallBack() }){
                             MainButtonView(title: viewModel.secondaryButtonTitle, width: UIScreen.width / 3.3, height: UIScreen.height/4 * 0.21)
                         }
-                        .alert(item: $viewModel.alertItem){alert in
-                            Alert(title: alert.title, message: alert.message, dismissButton: alert.dismissButton)
-                        }
+                        
+                        
                         Spacer()
                     }
                     Spacer()
                 }
+            }
+            .alert(item: $viewModel.alertItem){alert in
+                Alert(title: alert.title, message: alert.message, dismissButton: alert.dismissButton)
             }
             .edgesIgnoringSafeArea(.all)
             .disabled(viewModel.isLoading)

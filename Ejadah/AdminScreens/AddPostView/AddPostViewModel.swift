@@ -50,8 +50,7 @@ final class AddPostViewModel:ObservableObject{
         
     }
     //MARK:- addTrack
-    func addTrack()  {
-        self.uploadFile()
+    func addTrack(completion: @escaping (Result<Void, Error>) -> Void)  {
         if !urlString.isEmpty{
             var duration = 0
             let assetKeys = ["playable", "duration"]
@@ -61,7 +60,17 @@ final class AddPostViewModel:ObservableObject{
                     let playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: assetKeys)
                     duration = Int(CMTimeGetSeconds(playerItem.duration) / 60 )
                     let track  = PostModel(title: post.track.title, description: post.track.description, trackURL: urlString, trackDuration: duration , isAudio: isAudio() , categoryId: self.category.id!, URLShare: urlString)
-                    repository.addTrack(track: track)
+                    repository.addTrack(track: track){ result in
+                        switch result{
+                            case .success(_):
+                                completion(.success( () ))
+                                return
+                                
+                            case .failure(let error):
+                                completion(.failure(error))
+                                return
+                        }
+                    }
                 }
             })
         }
@@ -69,7 +78,7 @@ final class AddPostViewModel:ObservableObject{
     
     //MARK:- uploadFile
     // func to upload file
-    func uploadFile(){
+    func uploadFile(completion: @escaping (Result<Void, Error>) -> Void){
         DispatchQueue.main.async {
             self.isLoading = true
             if self.data != nil{
@@ -83,21 +92,22 @@ final class AddPostViewModel:ObservableObject{
                                         DispatchQueue.main.async {
                                             self.urlString = url.absoluteString
                                             self.isLoading = false
+                                            completion(.success( () ))
+                                            return
                                             
                                         }
                                     case .failure(let error):
-                                        DispatchQueue.main.async {
-                                            self.isLoading = false
-                                            self.alertItem = AlertItem(title: Text("Uploading Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
-                                        }
+                                        self.isLoading = false
+                                        completion(.failure(error))
+                                        return
                                         
                                 }
                             }
                         case .failure(let error):
-                            DispatchQueue.main.async {
-                                self.isLoading = false
-                                self.alertItem = AlertItem(title: Text("Uploading Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
-                            }
+                            
+                            self.isLoading = false
+                            self.alertItem = AlertItem(title: Text("Uploading Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
+                            
                     }
                 }
             }
@@ -148,7 +158,25 @@ final class AddPostViewModel:ObservableObject{
             //            let updatedPost = TrackModel(id: post.id, title: self.postTitle, description: self.description, trackURL: post.trackURL, trackDuration: post.trackDuration, isAudio: post.isAudio, categoryId: post.categoryId, URLShare: post.URLShare)
             //            self.repository.updatePost(post: updatedPost)
         }else{
-            self.addTrack()
+            // first uploading file
+            self.uploadFile(){result in
+                // checking result of uploading file if went success or not
+                switch result{
+                    case .success():
+                        self.addTrack(){result in
+                            switch result{
+                                case .success():
+                                    self.alertItem = AlertItem(title: Text("نجاح"), message: Text("تم اضافه الشرح بنجاح"), dismissButton: .default(Text("حسنا")))
+                                case .failure(let error):
+                                    self.alertItem = AlertItem(title: Text("خطا"), message: Text(error.localizedDescription), dismissButton: .default(Text("حسنا")))
+                            }
+                        }
+                        
+                    case .failure(let error):
+                        self.alertItem = AlertItem(title: Text("Uploading Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
+                }
+            }
+            
         }
     }
 }
