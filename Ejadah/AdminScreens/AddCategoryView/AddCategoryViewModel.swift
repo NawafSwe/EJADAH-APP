@@ -13,6 +13,7 @@ final class AddCategoryViewModel:ObservableObject{
     var dismiss: Binding<Bool>
     var mode:Binding<Bool>
     var category:CategoryService
+    @Published var alertItem:AlertItem? = nil
     @Published private var categoryRepository = CategoryRepository()
     init(dismiss:Binding<Bool>, mode:Binding<Bool>){
         self.dismiss = dismiss
@@ -37,10 +38,22 @@ final class AddCategoryViewModel:ObservableObject{
     func callBackPublishButton(){
         // if mode true then it is update mode
         if mode.wrappedValue{
-            self.categoryRepository.updateCategory(category: self.category.category)
+            self.categoryRepository.updateCategory(category: self.category.category){result in
+                switch result{
+                    case .success():
+                        self.alertItem = AlertItem(title: Text("نجاح"), message: Text("تمت إضافة القسم بنجاح"), dismissButton: .default(Text("حسنا")))
+                        return 
+                    case .failure(let error):
+                        self.alertItem = AlertItem(title: Text("فشل"), message:Text(error.localizedDescription), dismissButton: .default(Text("حسنا")))
+                        return
+                }
+                
+            }
         }else {
             let categoryModel = CategoryModel(title: self.category.category.title, trackNumber: category.category.trackNumber)
-            self.categoryRepository.addCategory(categoryModel)
+            self.categoryRepository.addCategory(categoryModel){result in
+                
+            }
         }
     }
 }

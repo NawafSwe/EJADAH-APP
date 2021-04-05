@@ -50,17 +50,22 @@ final class CategoryRepository:ObservableObject{
     
     /// adding new category to firestore
     /// - Parameter category: category model that has the data
-    func addCategory(_ category: CategoryModel){
+    func addCategory(_ category: CategoryModel , completion: @escaping (Result<Void, Error>) -> Void){
         do{
             let _ = try db.collection(collectionName).addDocument(from: category){error in
                 if error != nil {
-                    fatalError(error!.localizedDescription)
+                    //fatalError(error!.localizedDescription)
+                    completion(.failure(error!))
+                    return
                 }
+                completion(.success( () ))
                 return
             }
-            return
+           
         }catch let error{
-            fatalError(error.localizedDescription)
+            completion(.failure(error))
+            return
+//            fatalError(error.localizedDescription)
         }
     }
     /// seed data to firestore by adding new dummy category
@@ -74,14 +79,24 @@ final class CategoryRepository:ObservableObject{
             }
         }
     }
-    func updateCategory(category: CategoryModel){
-        guard let id = category.id else{return}
+    
+    func updateCategory(category: CategoryModel, completion: @escaping (Result<Void, Error>)->Void){
+        guard let id = category.id else{ return }
         do{
-            try self.db.collection(collectionName).document(id).setData(from: category)
+            try self.db.collection(collectionName).document(id).setData(from: category){error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+            }
+            
+            completion(.success( () ))
             
         }catch{
             print(error)
+            completion(.failure(error))
+            return
+            
         }
     }
 }
-
