@@ -22,7 +22,8 @@ final class ManageCategoryViewModel:ObservableObject{
     @Published var showAddCategory = false
     @Published var didSelectCategory = false 
     @Published var repository = CategoryRepository()
-    @Published var showUpdateCategory = false 
+    @Published var showUpdateCategory = false
+    @Published var alertItem:AlertItem? = nil
     
     func enableAddCategory(){   self.showAddCategory.toggle()   }
     
@@ -30,6 +31,14 @@ final class ManageCategoryViewModel:ObservableObject{
         guard let id = selectedCategoryId else {
             return
         }
-        self.repository.deleteCategory(id)
+        self.repository.deleteCategory(id){ [self] result in
+            switch result{
+                case .success(): DispatchQueue.main.async { alertItem = AlertItem(title: Text("نجاح"), message: Text("تم حذف القسم بنجاح"), dismissButton: .default(Text("حسنا") )) }
+                case .failure(let error): DispatchQueue.main.async { alertItem = AlertItem(title: Text("فشل"), message: Text(error.localizedDescription), dismissButton: .default(Text("حسنا")))}
+                    
+                    
+            }
+            
+        }
     }
 }

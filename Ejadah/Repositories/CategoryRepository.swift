@@ -52,7 +52,7 @@ final class CategoryRepository:ObservableObject{
     /// - Parameter category: category model that has the data
     func addCategory(_ category: CategoryModel , completion: @escaping (Result<Void, Error>) -> Void){
         do{
-             try db.collection(collectionName).addDocument(from: category){error in
+            let _ = try db.collection(collectionName).addDocument(from: category){error in
                 if error != nil {
                     //fatalError(error!.localizedDescription)
                     completion(.failure(error!))
@@ -63,22 +63,26 @@ final class CategoryRepository:ObservableObject{
             }
             completion(.success( () ))
             return
-
+            
         }catch let error{
             completion(.failure(error))
             return
-//            fatalError(error.localizedDescription)
+            //            fatalError(error.localizedDescription)
         }
     }
     /// seed data to firestore by adding new dummy category
     //func seedData(){ for cat in dummyData{ self.addCategory(cat) } }
     
-    func deleteCategory(_ id:String){
+    func deleteCategory(_ id:String , completion:@escaping (Result<Void, Error>)->Void){
         self.db.collection(collectionName).document(id).delete { (error) in
             if let error = error{
                 print(error)
-                // throw alert error 
+                // throw alert error
+                completion(.failure(error))
+                return
             }
+            completion(.success( () ))
+            return 
         }
     }
     
