@@ -52,7 +52,7 @@ final class CategoryRepository:ObservableObject{
     /// - Parameter category: category model that has the data
     func addCategory(_ category: CategoryModel , completion: @escaping (Result<Void, Error>) -> Void){
         do{
-            let _ = try db.collection(collectionName).addDocument(from: category){error in
+             try db.collection(collectionName).addDocument(from: category){error in
                 if error != nil {
                     //fatalError(error!.localizedDescription)
                     completion(.failure(error!))
@@ -61,7 +61,9 @@ final class CategoryRepository:ObservableObject{
                 completion(.success( () ))
                 return
             }
-           
+            completion(.success( () ))
+            return
+
         }catch let error{
             completion(.failure(error))
             return
