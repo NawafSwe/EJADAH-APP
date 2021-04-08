@@ -30,11 +30,12 @@ final class AddPostViewModel:ObservableObject{
     @Published var post : TrackService
     @Published var isLoading = false
     @Published var alertItem:AlertItem?
+    @Published var importedFileName: String = "" 
     // will control the func to decide edit mode or add new post
     var mode:Binding<Bool>
     let category : CategoryModel
     
-    //MARK:- initialisers
+    //MARK:- initialiser
     init(category: CategoryModel , dismiss:Binding<Bool> , mode:Binding<Bool> ){
         self.category = category
         self.dismiss = dismiss
@@ -86,6 +87,7 @@ final class AddPostViewModel:ObservableObject{
     /// - Parameter completion: completion indicates the status of the operation if went success or failed
     func uploadFile(completion: @escaping (Result<Void, Error>) -> Void){
         DispatchQueue.main.async {
+            
             self.isLoading = true
             if self.data != nil{
                 print(self.data!)
@@ -135,7 +137,7 @@ final class AddPostViewModel:ObservableObject{
     
     // dismissing current view
     func dismissView(){ self.dismiss.wrappedValue.toggle() }
-    func getHeaderTitle()->String{ mode.wrappedValue ? editTitle : addTrackLabel }
+    func getHeaderTitle()-> String{ mode.wrappedValue ? editTitle : addTrackLabel }
     
     // getting the button based on the mode action
     func getDeleteButton()-> some View{
@@ -146,14 +148,17 @@ final class AddPostViewModel:ObservableObject{
     }
     func getPublishButton()->some View{
         Button(action:{   self.showDocuments.toggle()  }){
-            MainButtonView(title: "نشر الشرح" , color: Color.mainText, width: UIScreen.width / 3 * 1.46 , height: UIScreen.height / 3 * 0.18 )
+            MainButtonView(title: "نشر الشرح" , color: Color.mainText, width: UIScreen.width / 4 * 1.30 , height: UIScreen.height / 3 * 0.18 )
+                .padding(.trailing , 30)
                 .overlay(
                     Image(IconsCollection.plus)
                         .resizable()
-                        .frame(width: 24, height: 24)
+                        .frame(width: 20, height: 20)
                         .padding(.top)
-                        .padding(.trailing)
+                        .padding(.trailing , 33)
+                    
                     , alignment: .trailing)
+                 
         }
     }
     
@@ -173,6 +178,7 @@ final class AddPostViewModel:ObservableObject{
                             switch result{
                                 case .success():
                                     self.alertItem = AlertItem(title: Text("نجاح"), message: Text("تم اضافه الشرح بنجاح"), dismissButton: .default(Text("حسنا")))
+                                    
                                 case .failure(let error):
                                     self.alertItem = AlertItem(title: Text("خطا"), message: Text(error.localizedDescription), dismissButton: .default(Text("حسنا")))
                             }
@@ -184,5 +190,14 @@ final class AddPostViewModel:ObservableObject{
             }
             
         }
+    }
+    
+    func setImportedFileName(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            guard let data = self.data else {return}
+            self.importedFileName = data.lastPathComponent
+            print(self.importedFileName)
+        }
+
     }
 }

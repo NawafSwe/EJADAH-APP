@@ -75,19 +75,27 @@ struct AddPostView: View {
                                     .foregroundColor(.black)
                             }
                             
-                            
-                            if viewModel.mode.wrappedValue{
-                                viewModel.getDeleteButton()
+                          
+                                if viewModel.mode.wrappedValue{
+                                    viewModel.getDeleteButton()
+                                    
+                                }else{
+                                    viewModel.getPublishButton()
+                                        .sheet(isPresented: $viewModel.showDocuments , onDismiss:self.viewModel.setImportedFileName){ FileManagerView(capturedData: $viewModel.data) }
+                                        .padding(.trailing , -15)
+                                    
+                                }
                                 
-                            }else{
-                                viewModel.getPublishButton()
-                                    .sheet(isPresented: $viewModel.showDocuments){ FileManagerView(capturedData: $viewModel.data) }
-                                
+                                Text(self.viewModel.importedFileName)
                             }
+                           
+
                         }
-                        Button(action:{ self.viewModel.secondaryCallBack() }){
-                            MainButtonView(title: viewModel.secondaryButtonTitle, width: UIScreen.width / 3.3, height: UIScreen.height/4 * 0.21)
-                        }
+                            Button(action:{ self.viewModel.secondaryCallBack() }){
+                                MainButtonView(title: viewModel.secondaryButtonTitle, width: UIScreen.width / 4, height: UIScreen.height/4 * 0.21)
+                            }
+                            
+                        
                         
                         
                         Spacer()
@@ -107,7 +115,7 @@ struct AddPostView: View {
             
         }
     }
-}
+
 struct AddTrackView_Previews: PreviewProvider {
     static var previews: some View {
         AddPostView(viewModel: AddPostViewModel(category: MockCategoryData.categorySample, dismiss: .constant(false) , mode: .constant(false)))
