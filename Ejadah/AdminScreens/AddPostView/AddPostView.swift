@@ -19,7 +19,7 @@ struct AddPostView: View {
         ZStack{
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack {
-                ComboHeaderView(title: viewModel.getHeaderTitle() , rightButtonIcon: IconsCollection.rightArrow, rightCallBack: viewModel.dismissView)
+                OneButtonHeaderView(title: viewModel.getHeaderTitle(), rightCallBack: viewModel.dismissView, rightIcon: IconsCollection.rightArrow)
                 ScrollView {
                     VStack(spacing: 20){
                         VStack(alignment: .trailing) {

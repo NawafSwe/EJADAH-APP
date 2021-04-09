@@ -10,12 +10,15 @@ import SwiftUI
 struct PostListView: View {
     @ObservedObject var viewModel : PostListViewModel
     // customizing tab bar furthermore
+    let title = "الشروحات"
     init(viewModel: PostListViewModel){ self.viewModel = viewModel }
     var body: some View {
         ZStack {
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack(spacing: 0.0) {
-                ComboHeaderView(title: "الشروحات", rightButtonIcon: IconsCollection.rightArrow, rightCallBack: self.viewModel.dismissView)
+                
+                
+                OneButtonHeaderView(title: title, rightCallBack: viewModel.dismissView, rightIcon: IconsCollection.rightArrow)
                     .accessibility(sortPriority: 1)
                 
                 ScrollView {
@@ -25,8 +28,8 @@ struct PostListView: View {
                                 .accessibility(sortPriority: 0)
                                 .padding(5)
                                 .onTapGesture {
-                                     self.viewModel.showPlayerView.toggle()
-                                     self.viewModel.selectedTrack = track.track
+                                    self.viewModel.showPlayerView.toggle()
+                                    self.viewModel.selectedTrack = track.track
                                 }
                         }
                         
@@ -42,13 +45,13 @@ struct PostListView: View {
             }
         }
         .accessibilityElement(children: .contain)
-       
+        
     }
     
 }
 struct CategoryDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         PostListView(viewModel: PostListViewModel(category: MockCategoryData.categorySample, dismiss: .constant(false)))
-          
+        
     }
 }

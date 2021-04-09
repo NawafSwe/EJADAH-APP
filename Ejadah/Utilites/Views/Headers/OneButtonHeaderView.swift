@@ -20,6 +20,7 @@ struct OneButtonHeaderView: View {
                 .padding(.horizontal)
                 .foregroundColor(.mainText)
                 .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
+                .padding(.horizontal)
                 .padding(.top, 12)
                 .accessibility(label: Text(title))
             Spacer()
