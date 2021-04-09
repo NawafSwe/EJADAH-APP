@@ -55,7 +55,7 @@ struct AddPostView: View {
                                 .padding(.horizontal)
                             TextEditor(text: $viewModel.post.track.description)
                                 .font(Font.custom(K.TajwalFonts.light, size: 24))
-                                .frame(width: UIScreen.width / 2 * 1.9, height: UIScreen.height / 4 * 0.8, alignment: .center)
+                                .frame(width: UIScreen.width / 2 * 1.9, height: UIScreen.height / 5 * 0.8, alignment: .center)
                                 .background(Color.mainText )
                                 .foregroundColor(.black)
                                 .cornerRadius(15)
