@@ -16,26 +16,26 @@ struct CategoryListView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0){
-                ComboHeaderView(title: title)
-                     .accessibility(label: AccessibilitiesDescription.headerCategoryTitle.label)
-                     .accessibility(sortPriority: 1)
+                MainHeaderView(title:title)
+                    .accessibility(label: AccessibilitiesDescription.headerCategoryTitle.label)
+                    .accessibility(sortPriority: 1)
+                
+                ScrollView {
+                    LazyVGrid(columns: viewModel.columns, spacing: K.Sizes.scrollVSpacing) {
                         
-                    ScrollView {
-                            LazyVGrid(columns: viewModel.columns, spacing: K.Sizes.scrollVSpacing) {
-                                
-                                ForEach(viewModel.categories){ category in
-                                
-                                    // passing category in categoryView
-                                    CategoryView(category: category)
-                                        // can be changed
-                                        //.accessibility(label: Text( category.category.title) )
-                                        .accessibility(sortPriority: 0)
-                                        .onTapGesture { self.viewModel.selectedCategory =  category }
-                                }
+                        ForEach(viewModel.categories){ category in
                             
-                             
-                            }.padding(EdgeInsets(top: K.Sizes.scrollVPadding, leading: K.Sizes.scrollHPadding, bottom: K.Sizes.scrollVPadding, trailing: K.Sizes.scrollHPadding))
-                    }
+                            // passing category in categoryView
+                            CategoryView(category: category)
+                                // can be changed
+                                //.accessibility(label: Text( category.category.title) )
+                                .accessibility(sortPriority: 0)
+                                .onTapGesture { self.viewModel.selectedCategory =  category }
+                        }
+                        
+                        
+                    }.padding(EdgeInsets(top: K.Sizes.scrollVPadding, leading: K.Sizes.scrollHPadding, bottom: K.Sizes.scrollVPadding, trailing: K.Sizes.scrollHPadding))
+                }
             }.edgesIgnoringSafeArea(.all)
             // pass categoryService obj
             if viewModel.selectedCategory != nil &&  viewModel.didSelectCategory {
@@ -45,9 +45,9 @@ struct CategoryListView: View {
                 PostListView(viewModel: PostListViewModel(category: viewModel.selectedCategory!.category , dismiss: $viewModel.didSelectCategory))
                     .animation(.easeIn(duration: 0.3))
                     .animation(nil)
-                 }
-          }
-            .accessibilityElement(children: .contain)
+            }
+        }
+        .accessibilityElement(children: .contain)
     }
 }
 
@@ -55,8 +55,8 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             CategoryListView()
-            .previewDevice(K.Devices.iPhone12ProMax)
-                            
+                .previewDevice(K.Devices.iPhone12ProMax)
+            
         }
     }
 }

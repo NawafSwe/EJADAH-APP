@@ -14,7 +14,7 @@ struct ManageCategoryView: View {
         ZStack{
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack(alignment: .center, spacing: 0){
-                TwoButtonsHeader(title:  managerViewModel.title, leftCallBack: managerViewModel.enableAddCategory, rightCallBack: AuthenticationManager.shared.logout, leftIcon: IconsCollection.add, rightIcon: IconsCollection.logout)
+                TwoButtonsHeaderView(title:  managerViewModel.title, leftCallBack: managerViewModel.enableAddCategory, rightCallBack: AuthenticationManager.shared.logout, leftIcon: IconsCollection.add, rightIcon: IconsCollection.logout)
                 
                 ScrollView {
                     LazyVGrid(columns: viewModel.columns, spacing:K.Sizes.scrollVSpacing) {

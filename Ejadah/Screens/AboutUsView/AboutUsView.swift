@@ -20,7 +20,7 @@ struct AboutUsView: View {
                     .edgesIgnoringSafeArea(.all)
             // main view
             VStack {
-                ComboHeaderView(title: aboutUsTitle)
+                MainHeaderView(title: aboutUsTitle)
                 Spacer()
 
                 Text("منهل")

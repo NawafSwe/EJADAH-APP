@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TwoButtonsHeader: View {
+struct TwoButtonsHeaderView: View {
     let title:String
     let leftCallBack: ()->Void
     let rightCallBack:()->Void
@@ -25,10 +25,10 @@ struct TwoButtonsHeader: View {
             .padding(.leading)
             Spacer()
             Text(title)
-                
                 .foregroundColor(.mainText)
                 .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
                 .padding(.horizontal)
+                .accessibility(label: AccessibilitiesDescription.headerCategoryTitle.label)
             Spacer()
             Button(action:rightCallBack){
                 Image(rightIcon)
