@@ -1,5 +1,5 @@
 //
-//  MainHeaderView.swift
+//  OneButtonHeaderView.swift
 //  Ejadah
 //
 //  Created by Nawaf B Al sharqi on 09/04/2021.
@@ -7,18 +7,29 @@
 
 import SwiftUI
 
-struct MainHeaderView: View {
+struct OneButtonHeaderView: View {
     let title:String
+    let rightCallBack:()->Void
+    let rightIcon:String
     var body: some View {
-        HStack{
+        HStack(alignment:.center){
+            
             Spacer()
-            Text("\(title)")
+                .frame(width:UIScreen.width / 4.29)
+            Text(title)
+                .padding(.horizontal)
                 .foregroundColor(.mainText)
                 .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
                 .padding(.horizontal)
                 .padding(.top, 12)
                 .accessibility(label: Text(title))
             Spacer()
+            Button(action: rightCallBack){
+                Image(rightIcon)
+                    .resizable()
+                    .frame(width: 32, height: 32, alignment: .center)
+            }
+            .padding(.trailing)
         }
         .padding(.top)
         .frame(width: UIScreen.width  , height: UIScreen.height / 6.5 * 0.8)
@@ -28,8 +39,8 @@ struct MainHeaderView: View {
     }
 }
 
-struct MainHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainHeaderView(title:"header")
-    }
-}
+//struct OneButtonHeaderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OneButtonHeaderView()
+//    }
+//}

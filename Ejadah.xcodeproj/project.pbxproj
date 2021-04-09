@@ -44,6 +44,7 @@
 		39AD8AF925BB141E00D000E9 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AD8AF825BB141E00D000E9 /* CategoryService.swift */; };
 		39AFE7F22620A03700586ED8 /* TwoButtonsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AFE7F12620A03700586ED8 /* TwoButtonsHeaderView.swift */; };
 		39AFE7F62620A19D00586ED8 /* MainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AFE7F52620A19D00586ED8 /* MainHeaderView.swift */; };
+		39AFE7FA2620A27500586ED8 /* OneButtonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AFE7F92620A27500586ED8 /* OneButtonHeaderView.swift */; };
 		39CC72C625FA96B30013F7A0 /* uploadLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 39CC72C525FA96B30013F7A0 /* uploadLoading.json */; };
 		39CC72C925FA96C30013F7A0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CC72C825FA96C30013F7A0 /* LottieView.swift */; };
 		39CC72CD25FA979D0013F7A0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39CC72CC25FA979D0013F7A0 /* Lottie */; };
@@ -118,6 +119,7 @@
 		39AD8AF825BB141E00D000E9 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
 		39AFE7F12620A03700586ED8 /* TwoButtonsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoButtonsHeaderView.swift; sourceTree = "<group>"; };
 		39AFE7F52620A19D00586ED8 /* MainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderView.swift; sourceTree = "<group>"; };
+		39AFE7F92620A27500586ED8 /* OneButtonHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneButtonHeaderView.swift; sourceTree = "<group>"; };
 		39CC72C525FA96B30013F7A0 /* uploadLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uploadLoading.json; sourceTree = "<group>"; };
 		39CC72C825FA96C30013F7A0 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		39CC72CF25FA99DF0013F7A0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 			children = (
 				39AFE7F12620A03700586ED8 /* TwoButtonsHeaderView.swift */,
 				39AFE7F52620A19D00586ED8 /* MainHeaderView.swift */,
+				39AFE7F92620A27500586ED8 /* OneButtonHeaderView.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				39A9792B25A1F24200A12476 /* CategoryListView.swift in Sources */,
 				39366B1A25ED548A0091A44B /* FileManagerController.swift in Sources */,
 				39A9794925A2065A00A12476 /* RoundedCorners.swift in Sources */,
+				39AFE7FA2620A27500586ED8 /* OneButtonHeaderView.swift in Sources */,
 				39CC72D025FA99DF0013F7A0 /* LoadingView.swift in Sources */,
 				391DE49D25A6812700527267 /* FastRewindOrForwardButtonView.swift in Sources */,
 				39FAAEE825A7621C001E71B4 /* PostModel.swift in Sources */,

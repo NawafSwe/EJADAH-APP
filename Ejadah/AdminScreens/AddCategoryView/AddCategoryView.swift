@@ -13,7 +13,8 @@ struct AddCategoryView: View {
         ZStack{
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack{
-                ComboHeaderView(title: viewModel.addCategory , rightButtonIcon: IconsCollection.rightArrow, rightCallBack: self.viewModel.dismissView)
+//                ComboHeaderView(title: viewModel.addCategory , rightButtonIcon: IconsCollection.rightArrow, rightCallBack: self.viewModel.dismissView)
+                OneButtonHeaderView(title:viewModel.addCategory , rightCallBack: viewModel.dismissView , rightIcon: IconsCollection.rightArrow)
                 TextField("القسم",text: $viewModel.category.category.title)
                     .padding()
                     .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)

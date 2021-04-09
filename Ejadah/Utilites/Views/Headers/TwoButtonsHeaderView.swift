@@ -28,7 +28,7 @@ struct TwoButtonsHeaderView: View {
                 .foregroundColor(.mainText)
                 .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
                 .padding(.horizontal)
-                .accessibility(label: AccessibilitiesDescription.headerCategoryTitle.label)
+                .accessibility(label: Text(title))
             Spacer()
             Button(action:rightCallBack){
                 Image(rightIcon)
