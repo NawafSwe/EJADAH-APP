@@ -20,6 +20,7 @@ struct MainHeaderView: View {
             Spacer()
         }
         .padding(.top)
+        .padding(.horizontal)
         .frame(width: UIScreen.width  , height: UIScreen.height / 6.5 * 0.8)
         .background(Color.headerColor)
         .shadow(radius: 10, x: 0.0, y: 4)
