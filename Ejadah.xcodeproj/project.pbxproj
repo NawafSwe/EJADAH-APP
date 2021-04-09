@@ -42,6 +42,7 @@
 		39A9794925A2065A00A12476 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9794825A2065A00A12476 /* RoundedCorners.swift */; };
 		39A9B27B25CABAA600965742 /* UIActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9B27A25CABAA600965742 /* UIActivityController.swift */; };
 		39AD8AF925BB141E00D000E9 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AD8AF825BB141E00D000E9 /* CategoryService.swift */; };
+		39AFE7F22620A03700586ED8 /* TwoButtonsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AFE7F12620A03700586ED8 /* TwoButtonsHeader.swift */; };
 		39CC72C625FA96B30013F7A0 /* uploadLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 39CC72C525FA96B30013F7A0 /* uploadLoading.json */; };
 		39CC72C925FA96C30013F7A0 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CC72C825FA96C30013F7A0 /* LottieView.swift */; };
 		39CC72CD25FA979D0013F7A0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 39CC72CC25FA979D0013F7A0 /* Lottie */; };
@@ -114,6 +115,7 @@
 		39A9794825A2065A00A12476 /* RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorners.swift; sourceTree = "<group>"; };
 		39A9B27A25CABAA600965742 /* UIActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivityController.swift; sourceTree = "<group>"; };
 		39AD8AF825BB141E00D000E9 /* CategoryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryService.swift; sourceTree = "<group>"; };
+		39AFE7F12620A03700586ED8 /* TwoButtonsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoButtonsHeader.swift; sourceTree = "<group>"; };
 		39CC72C525FA96B30013F7A0 /* uploadLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = uploadLoading.json; sourceTree = "<group>"; };
 		39CC72C825FA96C30013F7A0 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		39CC72CF25FA99DF0013F7A0 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 		39A9793C25A1F45500A12476 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				39AFE7F02620A02500586ED8 /* Headers */,
 				399EC73B25C67D25000BA40B /* UIKitViews */,
 				3941D06225A355BF002BB2FA /* Buttons */,
 				39A9794725A2064600A12476 /* Views */,
@@ -433,6 +436,14 @@
 				3934899C25BC90C0002BC68E /* TrackService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		39AFE7F02620A02500586ED8 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				39AFE7F12620A03700586ED8 /* TwoButtonsHeader.swift */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 		39CC72C425FA969F0013F7A0 /* JSONFiles */ = {
@@ -640,6 +651,7 @@
 			files = (
 				39443CCA25E4DC7C00EE76DC /* AddCategoryView.swift in Sources */,
 				39ED827925CDCBF600220BB4 /* TextModifiers.swift in Sources */,
+				39AFE7F22620A03700586ED8 /* TwoButtonsHeader.swift in Sources */,
 				39DF4CB425F412730041E18F /* ManagePostViewModel.swift in Sources */,
 				39366B1025ED4AF20091A44B /* MoreButtonView.swift in Sources */,
 				3983927E25C083B40024FD7A /* UIScreen+Ext.swift in Sources */,

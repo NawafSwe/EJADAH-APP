@@ -16,7 +16,8 @@ struct ManagePostView: View {
         ZStack{
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack(alignment: .center, spacing: 0.0){
-                ComboHeaderView(title: managerViewModel.title, leftCallBack: self.managerViewModel.enableAddTrack , rightCallBack: viewModel.dismissView, leftButtonTitle: managerViewModel.addTitle, leftButtonIcon: IconsCollection.add, rightButtonIcon: IconsCollection.rightArrow)
+                
+                TwoButtonsHeader(title: managerViewModel.title, leftCallBack: managerViewModel.enableAddTrack, rightCallBack: viewModel.dismissView, leftIcon:  IconsCollection.add , rightIcon: IconsCollection.rightArrow)
                 
                 ScrollView {
                     LazyVGrid(columns: viewModel.columns, spacing:K.Sizes.scrollVSpacing) {
@@ -33,10 +34,10 @@ struct ManagePostView: View {
                                             }
                                             
                                             Button { self.managerViewModel.showAlert.toggle() }
-                                            label: {
-                                                Text(managerViewModel.deleteOption)
-                                            }
-
+                                                label: {
+                                                    Text(managerViewModel.deleteOption)
+                                                }
+                                            
                                         }
                                         .alert(isPresented: $managerViewModel.showAlert){
                                             Alert(title: Text(self.managerViewModel.alertTitle), message: Text(self.managerViewModel.alertMessage), primaryButton: .destructive(Text(self.managerViewModel.proceedAlertAction)){
@@ -46,7 +47,7 @@ struct ManagePostView: View {
                                             , secondaryButton: .cancel())
                                         }
                                     , alignment: .topTrailing
-                               )
+                                )
                                 .onTapGesture {
                                     self.managerViewModel.selectedPost = track
                                     self.managerViewModel.showEditForm = true
