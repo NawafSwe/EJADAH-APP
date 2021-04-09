@@ -28,7 +28,7 @@ struct AddCategoryView: View {
             .alert(item: $viewModel.alertItem){alert in
                 Alert(title: alert.title, message: alert.message, dismissButton: alert.dismissButton)
             }
-
+            
         }
     }
 }
@@ -38,3 +38,4 @@ struct AddCategoryView_Previews: PreviewProvider {
         AddCategoryView(viewModel: AddCategoryViewModel(dismiss: .constant(false), mode: .constant(false)))
     }
 }
+

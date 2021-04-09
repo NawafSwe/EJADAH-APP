@@ -14,8 +14,8 @@ struct ManageCategoryView: View {
         ZStack{
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack(alignment: .center, spacing: 0){
-                ComboHeaderView(title: managerViewModel.title, leftCallBack: managerViewModel.enableAddCategory, rightCallBack: AuthenticationManager.shared.logout, leftButtonTitle: managerViewModel.addTitle, leftButtonIcon: IconsCollection.add, rightButtonIcon: IconsCollection.logout)
-                
+//                ComboHeaderView(title: managerViewModel.title, leftCallBack: managerViewModel.enableAddCategory, rightCallBack: AuthenticationManager.shared.logout, leftButtonTitle: managerViewModel.addTitle, leftButtonIcon: IconsCollection.add, rightButtonIcon: IconsCollection.logout)
+                TwoButtonsHeader(title:  managerViewModel.title, leftCallBack: managerViewModel.enableAddCategory, rightCallBack: AuthenticationManager.shared.logout, leftIcon: IconsCollection.add, rightIcon: IconsCollection.logout)
                 
                 ScrollView {
                     LazyVGrid(columns: viewModel.columns, spacing:K.Sizes.scrollVSpacing) {
@@ -84,5 +84,27 @@ struct ManageCategoryView: View {
 struct ManageCategoryView_Previews: PreviewProvider {
     static var previews: some View {
         ManageCategoryView()
+    }
+}
+
+struct TwoButtonsHeader:View{
+    let title:String
+    let leftCallBack: ()->Void
+    let rightCallBack:()->Void
+    let leftIcon:String
+    let rightIcon:String
+    
+    var body:some View{
+        HStack{
+            Spacer()
+            Text(title)
+            Spacer()
+            
+        }
+        .padding(.top)
+        .frame(width: UIScreen.width  , height: UIScreen.height / 6.5 * 0.8)
+        .background(Color.headerColor)
+        .shadow(radius: 10, x: 0.0, y: 4)
+        .edgesIgnoringSafeArea(.top)
     }
 }
