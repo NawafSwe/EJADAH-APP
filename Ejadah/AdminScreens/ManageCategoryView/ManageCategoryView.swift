@@ -14,7 +14,7 @@ struct ManageCategoryView: View {
         ZStack{
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack(alignment: .center, spacing: 0){
-//                ComboHeaderView(title: managerViewModel.title, leftCallBack: managerViewModel.enableAddCategory, rightCallBack: AuthenticationManager.shared.logout, leftButtonTitle: managerViewModel.addTitle, leftButtonIcon: IconsCollection.add, rightButtonIcon: IconsCollection.logout)
+                //                ComboHeaderView(title: managerViewModel.title, leftCallBack: managerViewModel.enableAddCategory, rightCallBack: AuthenticationManager.shared.logout, leftButtonTitle: managerViewModel.addTitle, leftButtonIcon: IconsCollection.add, rightButtonIcon: IconsCollection.logout)
                 TwoButtonsHeader(title:  managerViewModel.title, leftCallBack: managerViewModel.enableAddCategory, rightCallBack: AuthenticationManager.shared.logout, leftIcon: IconsCollection.add, rightIcon: IconsCollection.logout)
                 
                 ScrollView {
@@ -28,16 +28,16 @@ struct ManageCategoryView: View {
                                                 self.managerViewModel.showUpdateCategory = true
                                             } label: {
                                                 Text(managerViewModel.editOption)
-                                                   
+                                                
                                             }
-                                           
+                                            
                                             Button {
                                                 self.managerViewModel.showAlert.toggle()
                                             } label: { Text(managerViewModel.deleteOption) }
                                         }
                                         
-                                       
-                                       
+                                        
+                                        
                                         .alert(isPresented: $managerViewModel.showAlert){
                                             Alert(title: Text(self.managerViewModel.alertTitle), message: Text(self.managerViewModel.alertMessage), primaryButton: .destructive(Text(self.managerViewModel.proceedAlertAction)){
                                                 self.managerViewModel.selectedCategoryId = category.id
@@ -47,7 +47,7 @@ struct ManageCategoryView: View {
                                         }
                                     , alignment: .topTrailing
                                 )
-                                                                                 
+                                
                                 .onTapGesture {
                                     self.viewModel.selectedCategory = category
                                     
@@ -57,7 +57,7 @@ struct ManageCategoryView: View {
                     }
                     .padding(EdgeInsets(top: K.Sizes.scrollVPadding, leading: K.Sizes.scrollHPadding, bottom: K.Sizes.scrollVPadding, trailing: K.Sizes.scrollHPadding))
                 }
-               
+                
             }
             .edgesIgnoringSafeArea(.all)
             
@@ -96,9 +96,27 @@ struct TwoButtonsHeader:View{
     
     var body:some View{
         HStack{
+            Button(action: leftCallBack ){
+                Image(leftIcon)
+                    .resizable()
+                    .frame(width: 32, height: 32, alignment: .center)
+                
+            }
+            .padding(.leading)
             Spacer()
             Text(title)
+                
+                .foregroundColor(.mainText)
+                .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
+                .padding(.horizontal)
             Spacer()
+            Button(action:rightCallBack){
+                Image(rightIcon)
+                    .resizable()
+                    .frame(width: 32, height: 32, alignment: .center)
+                
+            }
+            .padding(.trailing)
             
         }
         .padding(.top)
