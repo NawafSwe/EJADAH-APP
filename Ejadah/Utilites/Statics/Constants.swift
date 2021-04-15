@@ -64,4 +64,9 @@ struct K {
     enum Files{
         static let uploadLoading = "uploadLoading"
     }
+    
+    //MARK:- dismissKeyboard
+    static func dismissKeyBoard(){
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }

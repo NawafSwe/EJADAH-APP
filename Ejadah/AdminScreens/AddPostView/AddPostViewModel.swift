@@ -55,7 +55,7 @@ final class AddPostViewModel:ObservableObject{
     /// adding new track to firebase by calling the repository function
     /// - Parameter completion: completion if the operation went success or failed
     func addTrack(completion: @escaping (Result<Void, Error>) -> Void)  {
-        if !urlString.isEmpty{
+        if validFields(){
             var duration = 0
             let assetKeys = ["playable", "duration"]
             let asset = AVAsset(url: data!)
@@ -77,6 +77,10 @@ final class AddPostViewModel:ObservableObject{
                     }
                 }
             })
+        }
+        else{
+            alertItem = AlertItem(title: Text("خطأ"), message: Text("عنوان الشرح مطلوب"), dismissButton: .default(Text("حسنا")))
+            return
         }
     }
     
@@ -158,7 +162,7 @@ final class AddPostViewModel:ObservableObject{
                         .padding(.trailing , 33)
                     
                     , alignment: .trailing)
-                 
+            
         }
     }
     
@@ -198,6 +202,14 @@ final class AddPostViewModel:ObservableObject{
             self.importedFileName = data.lastPathComponent
             print(self.importedFileName)
         }
-
+        
     }
+    
+    func validFields()->Bool{
+        if post.track.title.isEmpty || urlString.isEmpty  {
+            return false
+        }
+        return true
+    }
+    
 }
