@@ -55,7 +55,7 @@ final class AddPostViewModel:ObservableObject{
     /// adding new track to firebase by calling the repository function
     /// - Parameter completion: completion if the operation went success or failed
     func addTrack(completion: @escaping (Result<Void, Error>) -> Void)  {
-        if validFields(){
+        
             var duration = 0
             let assetKeys = ["playable", "duration"]
             let asset = AVAsset(url: data!)
@@ -77,11 +77,8 @@ final class AddPostViewModel:ObservableObject{
                     }
                 }
             })
-        }
-        else{
-            alertItem = AlertItem(title: Text("خطأ"), message: Text("عنوان الشرح مطلوب"), dismissButton: .default(Text("حسنا")))
-            return
-        }
+        
+
     }
     
     //MARK:- uploadFile
@@ -90,8 +87,8 @@ final class AddPostViewModel:ObservableObject{
     /// uploading file by calling the repository function to upload file to fire storage
     /// - Parameter completion: completion indicates the status of the operation if went success or failed
     func uploadFile(completion: @escaping (Result<Void, Error>) -> Void){
+        if validFields(){
         DispatchQueue.main.async {
-            
             self.isLoading = true
             if self.data != nil{
                 print(self.data!)
@@ -122,6 +119,11 @@ final class AddPostViewModel:ObservableObject{
                     }
                 }
             }
+        }
+            
+        }else{
+                        alertItem = AlertItem(title: Text("خطأ"), message: Text("عنوان الشرح مطلوب"), dismissButton: .default(Text("حسنا")))
+                        return
         }
     }
     
