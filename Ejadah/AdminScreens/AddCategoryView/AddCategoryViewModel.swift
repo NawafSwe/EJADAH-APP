@@ -41,7 +41,11 @@ final class AddCategoryViewModel:ObservableObject{
             self.categoryRepository.updateCategory(category: self.category.category){ [self] (result) in
                 switch result{
                     case .success():
-                        DispatchQueue.main.async { alertItem = AlertItem(title: Text("نجاح"), message:Text("تم تحديث القسم بنجاح"), dismissButton: .default(Text("حسنا"))) }
+                        DispatchQueue.main.async {
+                            alertItem = AlertItem(title: Text("نجاح"), message:Text("تم تحديث القسم بنجاح"), dismissButton: .default(Text("حسنا")))
+                            // dismissing after success operation
+                            dismiss.wrappedValue.toggle()
+                        }
                         
                     case .failure(let error): DispatchQueue.main.async { alertItem = AlertItem(title: Text("فشل"), message:Text(error.localizedDescription), dismissButton: .default(Text("حسنا"))) }
                 }

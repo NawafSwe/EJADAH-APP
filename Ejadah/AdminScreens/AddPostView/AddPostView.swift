@@ -75,47 +75,47 @@ struct AddPostView: View {
                                     .foregroundColor(.black)
                             }
                             
-                          
-                                if viewModel.mode.wrappedValue{
-                                    viewModel.getDeleteButton()
-                                    
-                                }else{
-                                    viewModel.getPublishButton()
-                                        .sheet(isPresented: $viewModel.showDocuments , onDismiss:self.viewModel.setImportedFileName){ FileManagerView(capturedData: $viewModel.data) }
-                                        .padding(.trailing , -15)
-                                    
-                                }
+                            
+                            if viewModel.mode.wrappedValue{
+                                viewModel.getDeleteButton()
                                 
-                                Text(self.viewModel.importedFileName)
-                            }
-                           
-
-                        }
-                            Button(action:{ self.viewModel.secondaryCallBack() }){
-                                MainButtonView(title: viewModel.secondaryButtonTitle, width: UIScreen.width / 4, height: UIScreen.height/4 * 0.21)
+                            }else{
+                                viewModel.getPublishButton()
+                                    .sheet(isPresented: $viewModel.showDocuments , onDismiss:self.viewModel.setImportedFileName){ FileManagerView(capturedData: $viewModel.data) }
+                                    .padding(.trailing , -15)
+                                
                             }
                             
+                            Text(self.viewModel.importedFileName)
+                        }
                         
                         
-                        
-                        Spacer()
                     }
+                    Button(action:{ self.viewModel.secondaryCallBack() }){
+                        MainButtonView(title: viewModel.secondaryButtonTitle, width: UIScreen.width / 4, height: UIScreen.height/4 * 0.21)
+                    }
+                    
+                    
+                    
+                    
                     Spacer()
                 }
+                Spacer()
+            }
             .onTapGesture { viewModel.toggleKB() }
-            }
-            .alert(item: $viewModel.alertItem){alert in
-                Alert(title: alert.title, message: alert.message, dismissButton: alert.dismissButton)
-            }
-            .edgesIgnoringSafeArea(.all)
-            .disabled(viewModel.isLoading)
-            if viewModel.isLoading{
-                LoadingView(fileName: K.Files.uploadLoading, isLoading: $viewModel.isLoading)
-            }
-            
-            
         }
+        .alert(item: $viewModel.alertItem){alert in
+            Alert(title: alert.title, message: alert.message, dismissButton: alert.dismissButton)
+        }
+        .edgesIgnoringSafeArea(.all)
+        .disabled(viewModel.isLoading)
+        if viewModel.isLoading{
+            LoadingView(fileName: K.Files.uploadLoading, isLoading: $viewModel.isLoading)
+        }
+        
+        
     }
+}
 
 struct AddTrackView_Previews: PreviewProvider {
     static var previews: some View {

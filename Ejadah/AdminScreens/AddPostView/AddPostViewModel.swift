@@ -49,7 +49,7 @@ final class AddPostViewModel:ObservableObject{
         self.post = post
         self.dismiss = dismiss
         self.mode = mode
-            // make sure things do not went wrong
+        // make sure things do not went wrong
         if self.mode.wrappedValue{
             
         }
@@ -204,16 +204,23 @@ final class AddPostViewModel:ObservableObject{
     }
     
     func setImportedFileName(){
+        DispatchQueue.main.async {
+            self.isLoading = true
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
             guard let data = self.data else {return}
             self.importedFileName = data.lastPathComponent
             print(self.importedFileName)
+            self.isLoading = false
+            
         }
+        
         
     }
     
     func validFields()->Bool{
-        if post.track.title.isEmpty || urlString.isEmpty  {
+        guard let url =  data?.absoluteString else {return false}
+        if post.track.title.isEmpty ||  url.isEmpty {
             return false
         }
         return true
