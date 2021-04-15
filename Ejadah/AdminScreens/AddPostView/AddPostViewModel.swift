@@ -56,29 +56,29 @@ final class AddPostViewModel:ObservableObject{
     /// - Parameter completion: completion if the operation went success or failed
     func addTrack(completion: @escaping (Result<Void, Error>) -> Void)  {
         
-            var duration = 0
-            let assetKeys = ["playable", "duration"]
-            let asset = AVAsset(url: data!)
-            asset.loadValuesAsynchronously(forKeys: assetKeys, completionHandler: {
-                DispatchQueue.main.async { [self] in
-                    let playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: assetKeys)
-                    duration = Int(CMTimeGetSeconds(playerItem.duration) / 60 )
-                    let track  = PostModel(title: post.track.title, description: post.track.description, trackURL: urlString, trackDuration: duration , isAudio: isAudio() , categoryId: self.category.id!, URLShare: urlString)
-                    repository.addTrack(track: track){ result in
-                        switch result{
-                            case .success(_):
-                                completion(.success( () ))
-                                return
-                                
-                            case .failure(let error):
-                                completion(.failure(error))
-                                return
-                        }
+        var duration = 0
+        let assetKeys = ["playable", "duration"]
+        let asset = AVAsset(url: data!)
+        asset.loadValuesAsynchronously(forKeys: assetKeys, completionHandler: {
+            DispatchQueue.main.async { [self] in
+                let playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: assetKeys)
+                duration = Int(CMTimeGetSeconds(playerItem.duration) / 60 )
+                let track  = PostModel(title: post.track.title, description: post.track.description, trackURL: urlString, trackDuration: duration , isAudio: isAudio() , categoryId: self.category.id!, URLShare: urlString)
+                repository.addTrack(track: track){ result in
+                    switch result{
+                        case .success(_):
+                            completion(.success( () ))
+                            return
+                            
+                        case .failure(let error):
+                            completion(.failure(error))
+                            return
                     }
                 }
-            })
+            }
+        })
         
-
+        
     }
     
     //MARK:- uploadFile
@@ -88,42 +88,42 @@ final class AddPostViewModel:ObservableObject{
     /// - Parameter completion: completion indicates the status of the operation if went success or failed
     func uploadFile(completion: @escaping (Result<Void, Error>) -> Void){
         if validFields(){
-        DispatchQueue.main.async {
-            self.isLoading = true
-            if self.data != nil{
-                print(self.data!)
-                PostRepository.shared.uploadData(file: self.data! ){result in
-                    switch result{
-                        case .success(let url):
-                            PostRepository.shared.getURL(file: url){result in
-                                switch result{
-                                    case .success(let url):
-                                        DispatchQueue.main.async {
-                                            self.urlString = url.absoluteString
+            DispatchQueue.main.async {
+                self.isLoading = true
+                if self.data != nil{
+                    print(self.data!)
+                    PostRepository.shared.uploadData(file: self.data! ){result in
+                        switch result{
+                            case .success(let url):
+                                PostRepository.shared.getURL(file: url){result in
+                                    switch result{
+                                        case .success(let url):
+                                            DispatchQueue.main.async {
+                                                self.urlString = url.absoluteString
+                                                self.isLoading = false
+                                                completion(.success( () ))
+                                                return
+                                                
+                                            }
+                                        case .failure(let error):
                                             self.isLoading = false
-                                            completion(.success( () ))
+                                            completion(.failure(error))
                                             return
                                             
-                                        }
-                                    case .failure(let error):
-                                        self.isLoading = false
-                                        completion(.failure(error))
-                                        return
-                                        
+                                    }
                                 }
-                            }
-                        case .failure(let error):
-                            self.isLoading = false
-                            self.alertItem = AlertItem(title: Text("Uploading Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
-                            
+                            case .failure(let error):
+                                self.isLoading = false
+                                self.alertItem = AlertItem(title: Text("Uploading Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
+                                
+                        }
                     }
                 }
             }
-        }
             
         }else{
-                        alertItem = AlertItem(title: Text("خطأ"), message: Text("عنوان الشرح مطلوب"), dismissButton: .default(Text("حسنا")))
-                        return
+            alertItem = AlertItem(title: Text("خطأ"), message: Text("عنوان الشرح وملف الشرح مطلوب"), dismissButton: .default(Text("حسنا")))
+            return
         }
     }
     
