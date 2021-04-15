@@ -30,7 +30,8 @@ final class AddPostViewModel:ObservableObject{
     @Published var post : TrackService
     @Published var isLoading = false
     @Published var alertItem:AlertItem?
-    @Published var importedFileName: String = "" 
+    @Published var importedFileName: String = ""
+    @Published var isShowingKB = false
     // will control the func to decide edit mode or add new post
     var mode:Binding<Bool>
     let category : CategoryModel
@@ -48,6 +49,10 @@ final class AddPostViewModel:ObservableObject{
         self.post = post
         self.dismiss = dismiss
         self.mode = mode
+            // make sure things do not went wrong
+        if self.mode.wrappedValue{
+            
+        }
         
     }
     //MARK:- addTrack
@@ -214,4 +219,10 @@ final class AddPostViewModel:ObservableObject{
         return true
     }
     
+    func toggleKB(){
+        if isShowingKB{
+            K.dismissKeyBoard()
+        }
+        isShowingKB.toggle()
+    }
 }

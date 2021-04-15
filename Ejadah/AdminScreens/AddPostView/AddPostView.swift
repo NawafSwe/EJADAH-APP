@@ -27,7 +27,7 @@ struct AddPostView: View {
                                 .font(Font.custom(K.TajwalFonts.regular, size: 18))
                                 .foregroundColor(.mainText)
                             
-                            TextField("العنوان", text: $viewModel.post.track.title)
+                            TextField("العنوان", text: $viewModel.post.track.title , onCommit:viewModel.toggleKB)
                                 .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
                                 .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
                                 .foregroundColor(.black)
@@ -69,7 +69,7 @@ struct AddPostView: View {
                                 Text(":\(viewModel.relatedLinkPlaceholder)")
                                     .font(Font.custom(K.TajwalFonts.regular, size: 18))
                                     .foregroundColor(.mainText)
-                                TextField(viewModel.relatedLinkPlaceholder, text: $viewModel.post.track.URLShare)
+                                TextField(viewModel.relatedLinkPlaceholder, text: $viewModel.post.track.URLShare , onCommit: viewModel.toggleKB)
                                     .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
                                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
                                     .foregroundColor(.black)
@@ -102,6 +102,7 @@ struct AddPostView: View {
                     }
                     Spacer()
                 }
+            .onTapGesture { viewModel.toggleKB() }
             }
             .alert(item: $viewModel.alertItem){alert in
                 Alert(title: alert.title, message: alert.message, dismissButton: alert.dismissButton)
