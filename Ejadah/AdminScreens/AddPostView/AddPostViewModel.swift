@@ -46,7 +46,7 @@ final class AddPostViewModel:ObservableObject{
     
     init(category: CategoryModel, post: TrackService , dismiss:Binding<Bool> , mode:Binding<Bool> ){
         self.category = category
-        self.post = post
+        self.post = TrackService(track: post.track)
         self.dismiss = dismiss
         self.mode = mode
         // make sure things do not went wrong
