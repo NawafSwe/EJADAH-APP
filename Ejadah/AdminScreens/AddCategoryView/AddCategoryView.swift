@@ -14,7 +14,7 @@ struct AddCategoryView: View {
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack{
                 OneButtonHeaderView(title:viewModel.addCategory , rightCallBack: viewModel.dismissView , rightIcon: IconsCollection.rightArrow)
-                TextField("القسم",text: $viewModel.category.category.title)
+                TextField("القسم",text: $viewModel.category.category.title, onCommit: K.dismissKeyBoard )
                     .padding()
                     .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
@@ -31,6 +31,7 @@ struct AddCategoryView: View {
             }
             
         }
+        .onTapGesture { K.dismissKeyBoard() }
     }
 }
 

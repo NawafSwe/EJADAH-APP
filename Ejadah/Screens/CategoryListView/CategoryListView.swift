@@ -30,7 +30,14 @@ struct CategoryListView: View {
                                 // can be changed
                                 //.accessibility(label: Text( category.category.title) )
                                 .accessibility(sortPriority: 0)
-                                .onTapGesture { self.viewModel.selectedCategory =  category }
+                                .onTapGesture {
+                                    DispatchQueue.main.async {
+                                        self.viewModel.selectedCategory =  category
+                                        self.viewModel.didSelectCategory = true
+                                    }
+                                    
+                                    
+                                }
                         }
                         
                         
