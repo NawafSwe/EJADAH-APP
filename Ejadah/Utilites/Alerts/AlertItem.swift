@@ -14,4 +14,8 @@ struct AlertItem : Identifiable{
     var title:Text
     var message:Text
     var dismissButton: Alert.Button
+    var action : ( ()->Void )?
 }
+
+ 
+

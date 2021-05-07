@@ -38,17 +38,17 @@ final class AddCategoryViewModel:ObservableObject{
     func callBackPublishButton(){
         
         if self.category.category.title.isEmpty {
-            self.alertItem = AlertItem(title: Text("خطا"), message: Text("يرجى عدم ترك اسم القسم فارغ"), dismissButton: .default(Text("حسنا")))
+            self.alertItem = AlertItem(title: Text("خطا"), message: Text("يرجى عدم ترك اسم القسم فارغ"), dismissButton: .default(Text("حسنا")  ))
             return
         }
         // if mode true then it is update mode
         if mode.wrappedValue{
             self.categoryRepository.updateCategory(category: self.category.category){ [self] (result) in
                 switch result{
-                    case .success(): alertItem = AlertItem(title: Text("نجاح"), message:Text("تم تحديث القسم بنجاح"), dismissButton: .default(Text("حسنا")))
+                    case .success(): alertItem = AlertItem(title: Text("نجاح"), message:Text("تم تحديث القسم بنجاح"), dismissButton: .default(Text("حسنا") ), action: dismissView )
                         
                         
-                    case .failure(let error): DispatchQueue.main.async { alertItem = AlertItem(title: Text("فشل"), message:Text(error.localizedDescription), dismissButton: .default(Text("حسنا"))) }
+                    case .failure(let error): DispatchQueue.main.async { alertItem = AlertItem(title: Text("فشل"), message:Text(error.localizedDescription), dismissButton: .default(Text("حسنا")) , action: dismissView) }
                 }
                 
             }
@@ -57,11 +57,11 @@ final class AddCategoryViewModel:ObservableObject{
             self.categoryRepository.addCategory(categoryModel){[self] (result) in
                 switch result{
                     case .success():
-                        alertItem = AlertItem(title: Text("نجاح"), message: Text("تمت إضافة القسم بنجاح"), dismissButton: .default(Text("حسنا")))
+                        alertItem = AlertItem(title: Text("نجاح"), message: Text("تمت إضافة القسم بنجاح"), dismissButton: .default(Text("حسنا")) , action: dismissView)
                         // after adding new category clear the text field
                         self.category.category.title = ""
                         
-                    case .failure(let error): DispatchQueue.main.async { alertItem = AlertItem(title: Text("فشل"), message:Text(error.localizedDescription), dismissButton: .default(Text("حسنا"))) }
+                    case .failure(let error): DispatchQueue.main.async { alertItem = AlertItem(title: Text("فشل"), message:Text(error.localizedDescription), dismissButton: .default(Text("حسنا")) , action: dismissView) }
                 }
             }
         }

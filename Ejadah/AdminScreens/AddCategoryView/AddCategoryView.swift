@@ -26,8 +26,9 @@ struct AddCategoryView: View {
                 Spacer()
             }
             .alert(item: $viewModel.alertItem){alert in
-                // after pressing ok dismiss view 
-                Alert(title: alert.title, message: alert.message, dismissButton: .default(Text("حسنا"), action: self.viewModel.dismissView))
+                // after pressing ok dismiss view if there is an action 
+                alert.action != nil ?  Alert(title: alert.title, message: alert.message, dismissButton: .default(Text("حسنا"), action: alert.action)) :  Alert(title: alert.title, message: alert.message, dismissButton: .default(Text("حسنا")))
+                
             }
             
         }
