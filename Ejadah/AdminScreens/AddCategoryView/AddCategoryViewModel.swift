@@ -36,6 +36,11 @@ final class AddCategoryViewModel:ObservableObject{
     
     //MARK:- callBackPublishButton
     func callBackPublishButton(){
+        
+        if self.category.category.title.isEmpty {
+            self.alertItem = AlertItem(title: Text("خطا"), message: Text("يرجى عدم ترك اسم القسم فارغ"), dismissButton: .default(Text("حسنا")))
+            return
+        }
         // if mode true then it is update mode
         if mode.wrappedValue{
             self.categoryRepository.updateCategory(category: self.category.category){ [self] (result) in
