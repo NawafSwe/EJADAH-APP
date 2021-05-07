@@ -204,17 +204,16 @@ final class AddPostViewModel:ObservableObject{
     }
     
     func setImportedFileName(){
+        guard let data = self.data else {return}
         DispatchQueue.main.async {
             self.isLoading = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-            guard let data = self.data else {return}
             self.importedFileName = data.lastPathComponent
             print(self.importedFileName)
             self.isLoading = false
             
         }
-        
         
     }
     

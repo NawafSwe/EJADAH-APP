@@ -11,7 +11,7 @@ final class CategoryViewModel:ObservableObject{
     //MARK:- Attributes
     @Published var didSelectCategory: Bool = false
     
-    @Published var selectedCategory: CategoryService?{ didSet {self.didSelectCategory = true} }
+    @Published var selectedCategory: CategoryService? = nil 
     
     
     

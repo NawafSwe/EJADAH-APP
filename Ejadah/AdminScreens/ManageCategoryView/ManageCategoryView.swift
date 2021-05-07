@@ -21,35 +21,46 @@ struct ManageCategoryView: View {
                         ForEach(viewModel.categories){category in
                             CategoryView(category:  category)
                                 .overlay(
-                                    Button(action:{}){ MoreButtonView() }
-                                        .contextMenu {
-                                            Button {
+                                    Button(action:{
+                                        
+                                        
+                                    }){ MoreButtonView() }
+                                    .contextMenu {
+                                        Button {
+                                            DispatchQueue.main.async {
+                                                // selecting category
+                                                self.viewModel.selectedCategory = category
                                                 self.managerViewModel.showUpdateCategory = true
-                                            } label: {
-                                                Text(managerViewModel.editOption)
-                                                
                                             }
                                             
-                                            Button {
-                                                self.managerViewModel.showAlert.toggle()
-                                            } label: { Text(managerViewModel.deleteOption) }
+                                        } label: {
+                                            Text(managerViewModel.editOption)
+                                            
                                         }
                                         
-                                        
-                                        
-                                        .alert(isPresented: $managerViewModel.showAlert){
-                                            Alert(title: Text(self.managerViewModel.alertTitle), message: Text(self.managerViewModel.alertMessage), primaryButton: .destructive(Text(self.managerViewModel.proceedAlertAction)){
-                                                self.managerViewModel.selectedCategoryId = category.id
-                                                self.managerViewModel.deleteCategory()
-                                            }
-                                            , secondaryButton: .cancel())
+                                        Button {
+                                            self.managerViewModel.showAlert.toggle()
+                                        } label: { Text(managerViewModel.deleteOption) }
+                                    }
+                                    
+                                    
+                                    
+                                    .alert(isPresented: $managerViewModel.showAlert){
+                                        Alert(title: Text(self.managerViewModel.alertTitle), message: Text(self.managerViewModel.alertMessage), primaryButton: .destructive(Text(self.managerViewModel.proceedAlertAction)){
+                                            self.managerViewModel.selectedCategoryId = category.id
+                                            self.managerViewModel.deleteCategory()
                                         }
+                                        , secondaryButton: .cancel())
+                                    }
                                     , alignment: .topTrailing
                                 )
                                 
                                 .onTapGesture {
-                                    self.viewModel.selectedCategory = category
-                                    
+                                    DispatchQueue.main.async {
+                                        self.viewModel.selectedCategory = category
+                                        self.viewModel.didSelectCategory = true
+                                    }
+                                  
                                     
                                 }
                         }
@@ -71,7 +82,7 @@ struct ManageCategoryView: View {
             if managerViewModel.showAddCategory{
                 AddCategoryView(viewModel: AddCategoryViewModel(dismiss: $managerViewModel.showAddCategory, mode: .constant(false)))
             }
-            if managerViewModel.showUpdateCategory && viewModel.selectedCategory != nil {
+            if managerViewModel.showUpdateCategory && self.viewModel.selectedCategory != nil  {
                 AddCategoryView(viewModel: AddCategoryViewModel(dismiss: $managerViewModel.showUpdateCategory, mode: .constant(true), category: viewModel.selectedCategory!))
             }
             
