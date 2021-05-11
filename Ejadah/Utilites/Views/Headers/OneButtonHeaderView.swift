@@ -12,24 +12,26 @@ struct OneButtonHeaderView: View {
     let rightCallBack:()->Void
     let rightIcon:String
     var body: some View {
-        HStack(alignment:.center){
+        HStack(alignment:.center, spacing:10){
             
-            Spacer()
-                .frame(width:UIScreen.width / 4.29)
-            Text(title)
-                .padding(.horizontal)
-                .foregroundColor(.mainText)
-                .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
-                .padding(.horizontal)
-                .padding(.top, 12)
-                .accessibility(label: Text(title))
-            Spacer()
             Button(action: rightCallBack){
                 Image(rightIcon)
                     .resizable()
                     .frame(width: 32, height: 32, alignment: .center)
             }
             .padding(.trailing)
+            
+         Spacer()
+            Text(title)
+                .frame(width: UIScreen.width - 285)
+                .padding(.horizontal)
+                .foregroundColor(.mainText)
+                .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
+                .padding(.horizontal)
+                .padding(.top, 12)
+                .accessibility(label: Text(title))
+            Spacer().frame(width: UIScreen.width - 320)
+
         }
         .padding(.top)
         .padding(.horizontal)
@@ -40,8 +42,8 @@ struct OneButtonHeaderView: View {
     }
 }
 
-//struct OneButtonHeaderView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        OneButtonHeaderView()
-//    }
-//}
+struct OneButtonHeaderView_Previews: PreviewProvider {
+    static var previews: some View {
+        OneButtonHeaderView(title: "عربي", rightCallBack: K.callBack, rightIcon: IconsCollection.rightArrow)
+    }
+}

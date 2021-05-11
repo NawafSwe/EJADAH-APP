@@ -15,6 +15,7 @@ struct AddCategoryView: View {
             VStack{
                 OneButtonHeaderView(title:viewModel.addCategory , rightCallBack: viewModel.dismissView , rightIcon: IconsCollection.rightArrow)
                 TextField("القسم",text: $viewModel.category.category.title, onCommit: K.dismissKeyBoard )
+                    .disableAutocorrection(true)
                     .padding()
                     .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
@@ -28,9 +29,7 @@ struct AddCategoryView: View {
             .alert(item: $viewModel.alertItem){alert in
                 // after pressing ok dismiss view if there is an action 
                 alert.action != nil ?  Alert(title: alert.title, message: alert.message, dismissButton: .default(Text("حسنا"), action: alert.action)) :  Alert(title: alert.title, message: alert.message, dismissButton: .default(Text("حسنا")))
-                
             }
-            
         }
         .onTapGesture { K.dismissKeyBoard() }
     }

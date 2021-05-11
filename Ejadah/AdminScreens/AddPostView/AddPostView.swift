@@ -28,6 +28,7 @@ struct AddPostView: View {
                                 .foregroundColor(.mainText)
                             
                             TextField("العنوان", text: $viewModel.post.track.title , onCommit:viewModel.toggleKB)
+                                .disableAutocorrection(true)
                                 .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
                                 .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
                                 .foregroundColor(.black)
@@ -54,6 +55,7 @@ struct AddPostView: View {
                                 .foregroundColor(.mainText)
                                 .padding(.horizontal)
                             TextEditor(text: $viewModel.post.track.description)
+                                .disableAutocorrection(true)
                                 .font(Font.custom(K.TajwalFonts.light, size: 24))
                                 .frame(width: UIScreen.width / 2 * 1.9, height: UIScreen.height / 5 * 0.8, alignment: .center)
                                 .background(Color.mainText )
@@ -70,6 +72,7 @@ struct AddPostView: View {
                                     .font(Font.custom(K.TajwalFonts.regular, size: 18))
                                     .foregroundColor(.mainText)
                                 TextField(viewModel.relatedLinkPlaceholder, text: $viewModel.post.track.URLShare , onCommit: viewModel.toggleKB)
+                                    .disableAutocorrection(true)
                                     .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
                                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
                                     .foregroundColor(.black)
