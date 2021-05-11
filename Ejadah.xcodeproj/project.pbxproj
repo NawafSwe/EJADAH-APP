@@ -33,6 +33,7 @@
 		3983C17325E034EE004ED12E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983C17225E034EE004ED12E /* LoginView.swift */; };
 		3983C17D25E04E90004ED12E /* AddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3983C17C25E04E90004ED12E /* AddPostView.swift */; };
 		398AA57B25E672270086F8E3 /* ManageCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398AA57A25E672270086F8E3 /* ManageCategoryView.swift */; };
+		39A49BA3264AB5DA00CF8C7E /* TextFieldModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A49BA2264AB5DA00CF8C7E /* TextFieldModifiers.swift */; };
 		39A9792B25A1F24200A12476 /* CategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9792A25A1F24200A12476 /* CategoryListView.swift */; };
 		39A9792D25A1F24200A12476 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A9792C25A1F24200A12476 /* Assets.xcassets */; };
 		39A9793025A1F24300A12476 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39A9792F25A1F24300A12476 /* Preview Assets.xcassets */; };
@@ -105,6 +106,7 @@
 		3983C17225E034EE004ED12E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3983C17C25E04E90004ED12E /* AddPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostView.swift; sourceTree = "<group>"; };
 		398AA57A25E672270086F8E3 /* ManageCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCategoryView.swift; sourceTree = "<group>"; };
+		39A49BA2264AB5DA00CF8C7E /* TextFieldModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifiers.swift; sourceTree = "<group>"; };
 		39A9792325A1F24200A12476 /* Ejadah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ejadah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39A9792A25A1F24200A12476 /* CategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListView.swift; sourceTree = "<group>"; };
 		39A9792C25A1F24200A12476 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				39ED827825CDCBF600220BB4 /* TextModifiers.swift */,
+				39A49BA2264AB5DA00CF8C7E /* TextFieldModifiers.swift */,
 			);
 			path = modifiers;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				398AA57B25E672270086F8E3 /* ManageCategoryView.swift in Sources */,
 				39FAAEEF25A763D4001E71B4 /* CategoryModel.swift in Sources */,
 				39DF4CBD25F422050041E18F /* AddPostViewModel.swift in Sources */,
+				39A49BA3264AB5DA00CF8C7E /* TextFieldModifiers.swift in Sources */,
 				3942852325BF062700E827EF /* HomeTabView.swift in Sources */,
 				391DE48A25A616DD00527267 /* MediaPlayerView.swift in Sources */,
 				39DF4CB725F412980041E18F /* ManageCategoryViewModel.swift in Sources */,

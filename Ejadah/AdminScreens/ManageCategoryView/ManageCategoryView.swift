@@ -60,13 +60,14 @@ struct ManageCategoryView: View {
                                         self.viewModel.selectedCategory = category
                                         self.viewModel.didSelectCategory = true
                                     }
-                                  
+                                    
                                     
                                 }
                         }
                     }
                     .padding(EdgeInsets(top: K.Sizes.scrollVPadding, leading: K.Sizes.scrollHPadding, bottom: K.Sizes.scrollVPadding, trailing: K.Sizes.scrollHPadding))
                 }
+                
                 
             }
             .edgesIgnoringSafeArea(.all)

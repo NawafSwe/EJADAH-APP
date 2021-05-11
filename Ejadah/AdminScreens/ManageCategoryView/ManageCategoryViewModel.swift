@@ -33,8 +33,8 @@ final class ManageCategoryViewModel:ObservableObject{
         }
         self.repository.deleteCategory(id){ [self] result in
             switch result{
-                case .success(): DispatchQueue.main.async { alertItem = AlertItem(title: Text("نجاح"), message: Text("تم حذف القسم بنجاح"), dismissButton: .default(Text("حسنا") )) }
-                case .failure(let error): DispatchQueue.main.async { alertItem = AlertItem(title: Text("فشل"), message: Text(error.localizedDescription), dismissButton: .default(Text("حسنا")))}
+                case .success():alertItem = AlertItem(title: Text("نجاح"), message: Text("تم حذف القسم بنجاح"), dismissButton: .default(Text("حسنا") ))
+                case .failure(let error): alertItem = AlertItem(title: Text("فشل"), message: Text(error.localizedDescription), dismissButton: .default(Text("حسنا")))
                     
                     
             }
