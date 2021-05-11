@@ -20,34 +20,34 @@ struct ManageCategoryView: View {
                     LazyVGrid(columns: viewModel.columns, spacing:K.Sizes.scrollVSpacing) {
                         ForEach(viewModel.categories){category in
                             CategoryView(category:  category)
-                                  .overlay(
+                                .overlay(
                                     Button(action:{}){ MoreButtonView() }
-                                                                 .contextMenu {
-                                                            Button {
-                                                                DispatchQueue.main.async {
-                                                                    // selecting category
-                                                                    self.viewModel.selectedCategory = category
-                                                                    self.managerViewModel.showUpdateCategory = true
-                                                                }
-                                
-                                                            } label: {
-                                                                Text(managerViewModel.editOption)
-                                
-                                                            }
-                                
-                                                            Button {
-                                                                self.managerViewModel.showAlert.toggle()
-                                                            } label: { Text(managerViewModel.deleteOption) }
-                                                        }
-                                
-                                                        .alert(isPresented: $managerViewModel.showAlert){
-                                                            Alert(title: Text(self.managerViewModel.alertTitle), message: Text(self.managerViewModel.alertMessage), primaryButton: .destructive(Text(self.managerViewModel.proceedAlertAction)){
-                                                                self.managerViewModel.selectedCategoryId = category.id
-                                                                self.managerViewModel.deleteCategory()
-                                                            }
-                                                            , secondaryButton: .cancel())
-                                                        }
-                                , alignment: .topTrailing)
+                                        .contextMenu {
+                                            Button {
+                                                DispatchQueue.main.async {
+                                                    // selecting category
+                                                    self.viewModel.selectedCategory = category
+                                                    self.managerViewModel.showUpdateCategory = true
+                                                }
+                                                
+                                            } label: {
+                                                Text(managerViewModel.editOption)
+                                                
+                                            }
+                                            
+                                            Button {
+                                                self.managerViewModel.showAlert.toggle()
+                                            } label: { Text(managerViewModel.deleteOption) }
+                                        }
+                                        
+                                        .alert(isPresented: $managerViewModel.showAlert){
+                                            Alert(title: Text(self.managerViewModel.alertTitle), message: Text(self.managerViewModel.alertMessage), primaryButton: .destructive(Text(self.managerViewModel.proceedAlertAction)){
+                                                self.managerViewModel.selectedCategoryId = category.id
+                                                self.managerViewModel.deleteCategory()
+                                            }
+                                            , secondaryButton: .cancel())
+                                        }
+                                    , alignment: .topLeading)
                                 .onTapGesture {
                                     DispatchQueue.main.async {
                                         self.viewModel.selectedCategory = category
