@@ -48,7 +48,7 @@ final class AddCategoryViewModel:ObservableObject{
                     case .success(): alertItem = AlertItem(title: Text("نجاح"), message:Text("تم تحديث القسم بنجاح"), dismissButton: .default(Text("حسنا") ), action: dismissView )
                         
                         
-                    case .failure(let error): DispatchQueue.main.async { alertItem = AlertItem(title: Text("فشل"), message:Text(error.localizedDescription), dismissButton: .default(Text("حسنا")) , action: dismissView) }
+                    case .failure(let error):  alertItem = AlertItem(title: Text("فشل"), message:Text(error.localizedDescription), dismissButton: .default(Text("حسنا")) , action: dismissView) 
                 }
                 
             }
