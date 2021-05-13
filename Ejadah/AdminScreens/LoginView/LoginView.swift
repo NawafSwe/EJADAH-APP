@@ -65,6 +65,7 @@ struct LoginView: View {
                 
             }
         }
+        .onTapGesture(perform:K.dismissKeyBoard)
     }
 }
 
