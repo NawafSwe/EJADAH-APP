@@ -30,10 +30,12 @@ struct LoginView: View {
                             .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
                             .foregroundColor(.black)
                             .padding(.horizontal)
+         
                     }
-                    
-                    .flipsForRightToLeftLayoutDirection(false)
+                    // since language is english and we are using Arabic we want to force direction of text fields
                     .environment(\.layoutDirection, .rightToLeft)
+                    
+                   
                     
                     VStack(alignment: .leading , spacing: 10){
                         Text(viewModel.passwordField)
@@ -48,8 +50,10 @@ struct LoginView: View {
                             
                         
                     }
-                    .flipsForRightToLeftLayoutDirection(false)
+                    // since language is english and we are using Arabic we want to force direction of text fields
                     .environment(\.layoutDirection, .rightToLeft)
+                    
+                    
                     Button(action:{ viewModel.login(with: viewModel.email, password: viewModel.password)  }){
                         MainButtonView(title: viewModel.loginTitle, width: UIScreen.width / 3, height: UIScreen.height / 4 * 0.2)
                     }
