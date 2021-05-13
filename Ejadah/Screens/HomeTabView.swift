@@ -19,21 +19,6 @@ struct HomeTabView: View {
         
         TabView {
 
-            AdminView().tabItem{
-                Image(IconsCollection.user)
-                    .resizable()
-                    .modifier(TabIconsModifiers())
-                Text("المشرف")
-            }
-            
-            AboutUsView().tabItem {
-                Image(systemName: SFIcons.bulbTab)
-                    .resizable()
-                    .modifier(TabIconsModifiers())
-                Text("عن إجادة")
-            }
-            
-
             
             CategoryListView().tabItem {
                 Image(systemName: SFIcons.homeTab)
@@ -42,6 +27,23 @@ struct HomeTabView: View {
                 Text("الرئيسية")
 
             }
+            
+
+            
+            AboutUsView().tabItem {
+                Image(systemName: SFIcons.bulbTab)
+                    .resizable()
+                    .modifier(TabIconsModifiers())
+                Text("عن إجادة")
+            }
+            
+            AdminView().tabItem{
+                Image(IconsCollection.user)
+                    .resizable()
+                    .modifier(TabIconsModifiers())
+                Text("المشرف")
+            }
+
         }
         .accentColor(.tabColor)
         .animation(.easeIn, value: 0.3)

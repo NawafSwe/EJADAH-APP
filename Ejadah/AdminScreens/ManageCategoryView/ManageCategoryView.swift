@@ -47,7 +47,7 @@ struct ManageCategoryView: View {
                                             }
                                             , secondaryButton: .cancel())
                                         }
-                                    , alignment: .topLeading)
+                                    , alignment: .topTrailing)
                                 .onTapGesture {
                                     DispatchQueue.main.async {
                                         self.viewModel.selectedCategory = category

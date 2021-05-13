@@ -12,7 +12,20 @@ struct OneButtonHeaderView: View {
     let rightCallBack:()->Void
     let rightIcon:String
     var body: some View {
-        HStack(alignment:.center, spacing:10){
+        HStack(alignment:.center){
+            
+            Spacer().frame(width:UIScreen.width / 5)
+            Text(title)
+                
+                .padding(.horizontal)
+                .foregroundColor(.mainText)
+                .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
+                .padding(.horizontal)
+                .padding(.top, 12)
+                .accessibility(label: Text(title))
+            Spacer()
+               
+            
             
             Button(action: rightCallBack){
                 Image(rightIcon)
@@ -21,16 +34,7 @@ struct OneButtonHeaderView: View {
             }
             .padding(.trailing)
             
-         Spacer()
-            Text(title)
-                .frame(width: UIScreen.width - 285)
-                .padding(.horizontal)
-                .foregroundColor(.mainText)
-                .modifier(TextModifiers(size: 20, type: K.TajwalFonts.bold, fixedSizeHr: true, fixedSizeVr: false, alignment: .center))
-                .padding(.horizontal)
-                .padding(.top, 12)
-                .accessibility(label: Text(title))
-            Spacer().frame(width: UIScreen.width - 320)
+       
 
         }
         .padding(.top)

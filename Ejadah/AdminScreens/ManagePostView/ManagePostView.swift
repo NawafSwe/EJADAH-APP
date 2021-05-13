@@ -17,7 +17,7 @@ struct ManagePostView: View {
             Color.mainBackground.edgesIgnoringSafeArea(.all)
             VStack(alignment: .center, spacing: 0.0){
                 
-                TwoButtonsHeaderView(title: managerViewModel.title, leftCallBack: viewModel.dismissView , rightCallBack:   managerViewModel.enableAddTrack, leftIcon: IconsCollection.rightArrow   , rightIcon:  IconsCollection.add)
+                TwoButtonsHeaderView(title: managerViewModel.title, leftCallBack: managerViewModel.enableAddTrack  , rightCallBack:  viewModel.dismissView , leftIcon:  IconsCollection.add , rightIcon:IconsCollection.rightArrow )
                 
                 ScrollView {
                     LazyVGrid(columns: viewModel.columns, spacing:K.Sizes.scrollVSpacing) {

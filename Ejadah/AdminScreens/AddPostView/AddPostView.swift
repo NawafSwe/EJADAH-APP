@@ -89,7 +89,10 @@ struct AddPostView: View {
                                 
                             }
                             
-                            Text(self.viewModel.importedFileName)
+                            if !viewModel.importedFileName.isEmpty{
+                                Text(self.viewModel.importedFileName)
+                                    .accessibility(label: Text(self.viewModel.importedFileName))
+                            }
                         }
                         
                         
