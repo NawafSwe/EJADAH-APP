@@ -29,9 +29,11 @@ struct AddPostView: View {
                             
                             TextField("العنوان", text: $viewModel.post.track.title , onCommit:viewModel.toggleKB)
                                 .disableAutocorrection(true)
-                                .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
+                                .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .leading)
                                 .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
                                 .foregroundColor(.black)
+                                // since language is english and we are using Arabic we want to force direction of text fields
+                                .environment(\.layoutDirection, .rightToLeft)
                         }
                         
                         // customized picker instead of text filed
@@ -61,6 +63,8 @@ struct AddPostView: View {
                                 .background(Color.mainText )
                                 .foregroundColor(.black)
                                 .cornerRadius(15)
+                                // since language is english and we are using Arabic we want to force direction of text fields
+                                .environment(\.layoutDirection, .rightToLeft)
                             
                             
                             
@@ -76,6 +80,9 @@ struct AddPostView: View {
                                     .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
                                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
                                     .foregroundColor(.black)
+                                    // since language is english and we are using Arabic we want to force direction of text fields
+                                    .environment(\.layoutDirection, .rightToLeft)
+                            
                             }
                             
                             
@@ -114,6 +121,7 @@ struct AddPostView: View {
             Alert(title: alert.title, message: alert.message, dismissButton: alert.dismissButton)
         }
         .edgesIgnoringSafeArea(.all)
+
         .disabled(viewModel.isLoading)
         if viewModel.isLoading{
             LoadingView(fileName: K.Files.uploadLoading, isLoading: $viewModel.isLoading)
@@ -121,6 +129,7 @@ struct AddPostView: View {
         
         
     }
+  
 }
 
 struct AddTrackView_Previews: PreviewProvider {
