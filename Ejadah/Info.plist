@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>Arabic</string>
+	<string>English</string>
 	<key>CFBundleDisplayName</key>
 	<string>Ejadah</string>
 	<key>CFBundleExecutable</key>

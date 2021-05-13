@@ -18,14 +18,14 @@ struct HomeTabView: View {
     var body: some View {
         
         TabView {
-            CategoryListView().tabItem {
-                Image(systemName: SFIcons.homeTab)
+
+            AdminView().tabItem{
+                Image(IconsCollection.user)
                     .resizable()
                     .modifier(TabIconsModifiers())
-                Text("الرئيسية")
-
+                Text("المشرف")
             }
-        
+            
             AboutUsView().tabItem {
                 Image(systemName: SFIcons.bulbTab)
                     .resizable()
@@ -33,11 +33,14 @@ struct HomeTabView: View {
                 Text("عن إجادة")
             }
             
-            AdminView().tabItem{
-                Image(IconsCollection.user)
+
+            
+            CategoryListView().tabItem {
+                Image(systemName: SFIcons.homeTab)
                     .resizable()
                     .modifier(TabIconsModifiers())
-                Text("المشرف")
+                Text("الرئيسية")
+
             }
         }
         .accentColor(.tabColor)
