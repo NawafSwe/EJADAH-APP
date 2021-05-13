@@ -20,6 +20,8 @@ struct AddCategoryView: View {
                     .frame(width: UIScreen.width / 2.2 * 2 , height: UIScreen.height / 4 * 0.2, alignment: .trailing)
                     .background(RoundedRectangle(cornerRadius: 10).foregroundColor(Color.mainText) )
                     .foregroundColor(.black)
+                    // since language is english and we are using Arabic we want to force direction of text fields
+                    .environment(\.layoutDirection, .rightToLeft)
                 Button(action:{self.viewModel.callBackPublishButton()}){
                     MainButtonView(title: viewModel.publishButton, width: UIScreen.width / 3)
                         .padding()
