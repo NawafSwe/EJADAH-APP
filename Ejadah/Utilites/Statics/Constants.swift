@@ -13,7 +13,8 @@ struct K {
     // MARK:- Preview_Devices
     /// to avoid typos and saving time 🥶
     // constructing share link vars
-    static let APP_IMAGE = URL(string: "https://firebasestorage.googleapis.com/v0/b/axe-ejadah.appspot.com/o/fv_copy_1.pdf?alt=media&token=b733dea6-f716-469e-bdbb-5c3211773bd0")!
+    // app image is already uploaded in fire storage
+    static let APP_IMAGE = URL(string: "https://firebasestorage.googleapis.com/v0/b/axe-ejadah.appspot.com/o/MainIcon.jpg?alt=media&token=7db50d1e-c694-41e1-aad5-b9ea5ea4bc4c")!
     static let APP_ID = "1551553821"
     static let HOST_NAME = "ejadah.page.link"
     static let TRACKS_PATH = "/tracks"
